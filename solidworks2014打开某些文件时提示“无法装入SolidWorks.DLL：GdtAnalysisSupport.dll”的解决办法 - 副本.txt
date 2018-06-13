@@ -1,0 +1,27 @@
+solidworks2014打开某些文件时提示“无法装入SolidWorks.DLL：GdtAnalysisSupport.dll”的解决办法
+
+此问题是windows漏洞补丁(据说是KB 3072630)所致.此补丁发布时间为2015年7月15日。本人在不久前装过一次SW2014，并没有出现这次的问题，所以很可能是系统补丁所致。本人win7_64位系统。在某网站发现该问题的解决办法。如下：
+
+1、点击“开始”“运行”，输入“regedit”后确认；
+
+2、进入注册表HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer。注意：如果没有Installer项，需要自己手动新建；
+
+3、点击“编辑”菜单，新建项“DWORD(32位)值”；
+
+4、修改名称为“RemappedElevatedProxiesPolicy”，单击回车确认；
+
+5、在右侧选中RemappedElevatedProxiesPolicy，并右键单击“修改”；
+
+6、将值改为“1”，点击确定；
+
+7、打开sw2014安装程序，选择修复；
+
+8、修复成功后，回到注册表编辑器，将RemappedElevatedProxiesPolicy的值由“1”修改回“0”，确认。
+
+修改完毕。本人亲自试过，此办法有效，修改后果然不再提示“无法装入SolidWorks.DLL：GdtAnalysisSupport.dll”。
+
+
+
+
+当在文件中点击打包命令，出现“无法装入SolidWorks DLL文件：sldshellutils。“时，如图A
+在电脑左下角点击开始\运行中输入cmd，进入DOS窗口，输入regsvr32 "C:\Program Files\Common Files\SolidWorks Shared\sldshellutils10u.dll“，如图B红色底线所示,回车后，弹出一个对话框，如图C所示，就OK了。
