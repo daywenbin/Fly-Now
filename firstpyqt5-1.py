@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     app = QApplication(sys.argv)
     mainWindow = QMainWindow()
-    ui = Ui_mainWindow()
+    ui = Ui()
     ui.setupUi(mainWindow)
     mainWindow.show()
     app.exec_()
